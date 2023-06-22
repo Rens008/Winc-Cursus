@@ -1,55 +1,71 @@
 # Do not modify these lines
-__winc_id__ = '71dd124b4a6e4d268f5973db521394ee'
-__human_name__ = 'strings'
+__winc_id__ = '25596924dffe436da9034d43d0af6791'
+__human_name__ = 'conditions'
 
 # Add your code after this line
 
-scorer_name = 'Gut von Examplestein' #voorbeeld
-goal_0 = 32 #1e goal
-player_0 = 'Ruud Gullit ' #1e scoorder
-goal_1 = 54 #2e goal
-scorer_goal_1 = 'Marco van Basten ' #2e scoorder
-test = scorer_name + (' scored in the ') + str(goal_0) + (' minute')
-scorers = player_0 + str(goal_0) + ', ' + scorer_goal_1 + str(goal_1)
-# print(scorers)
-report = player_0 + 'scored in the ' + str(goal_0) + 'nd minute\n' + scorer_goal_1 + 'scored in the ' + str(goal_1) + 'th minute'
-print (report) #deel 1 van de opdracht
-# print(final_scorers)
-
-#deel 2 van de opdracht:
-    #first name:
-player = player_0
-lengte_first_name = player.find(" ")
-first_name = (player[0:int(lengte_first_name)])
-print (first_name)
-
-    #lengte last name:
-last_name_len = int(len(player)) - int(player.find(" ")) - int(1)
-print(last_name_len)
-
-    #name short
-name_short = (player[0:1] + '.' + player[(lengte_first_name):])
-print(name_short)
-
-    #chant Spatie einde klopt niet
-# chant = (first_name + '!' + ' ')*str(player.find(" "))
-chant = ((first_name + "! ")*4).rstrip()
-print (chant)
 
 
+Weather = ['rainy', 'sunny', 'windy', 'neutral']
+Time_of_day = ['day', 'night']
+Cow_milking_status = [True, False]
+Location_of_the_cows = ['pasture', 'cowshed']
+Season = ['winter', 'spring', 'summer', 'fall']
+Slurry_tank = [True, False]
+Grass_status = [True, False]
 
+def print_main_action(Location_of_the_cows, main_action):
+    if Location_of_the_cows == 'cowshed':
+        return (main_action)
+    else:
+        Location_of_the_cows == 'pasture'
+        return ('"""take cows to cowshed' + '\n' +  main_action +  '\n'+ 'take cows back to pasture""')
 
-if len(chant) != " ":
-    print (bool(True))
-else: 
-    print (bool(False))
+def farm_action (Weather, Time_of_day, Cow_milking_status, Location_of_the_cows, Season, Slurry_tank, Grass_status):
+        if Location_of_the_cows == 'pasture' and (Time_of_day == 'night'or Weather == 'rainy'):
+            main_action = 'take cows to cowshed'
+            return (print_main_action(Location_of_the_cows, main_action))
+        elif Cow_milking_status == True and Location_of_the_cows == 'cowshed': 
+              main_action = 'milk cows'
+              return (print_main_action(Location_of_the_cows, main_action))
+#optie 1        
+        # elif Cow_milking_status == True and Location_of_the_cows == 'pasture':    
+        #       main_action = 'milk cows'
+        #       return (print_main_action(Location_of_the_cows, main_action))
+        elif Slurry_tank == True and (Location_of_the_cows == 'cowshed' and Weather != ('sunny' or 'windy')):
+              main_action = 'fertilize pasture'
+              return (print_main_action(Location_of_the_cows, main_action))
+        elif Grass_status == True and Season == 'spring' and Weather == 'sunny' and Location_of_the_cows != 'pasture':
+                main_action = 'mow grass'
+                return (print_main_action(Location_of_the_cows, main_action))
+#optie 2        
+        # if Location_of_the_cows == 'pasture':
+        #     return ('take cows to cowshed' + '\n' +  main_action +  '\n'+ 'take cows back to pasture')
+        # else:
+        #     return (main_action)
+        #return ('mow grass')
+#optie 3
+        # elif "":
+        #     action_before = 'take cows to cowshed'
+        #     main_action = 'test' 
+        #     action_after = 'take cows back to pasture'
+        #     if {farm_action == 'milk cows' or farm_action == 'fertilize pasture' or farm_action == 'mow grass'} and Location_of_the_cows == 'pasture':
+        #         return (action_before, "\n" ,  main_action,  '\n',action_after)
+        #     elif Location_of_the_cows == 'cowshed':
+        #           return (main_action)
+        else:
+              return('wait')  
 
-good_chant = bool(True)
-print(good_chant)
+print(farm_action('sunny', 'day', True, 'pasture', 'spring', False, True))
 
+#variable input: 
+# print(farm_action(Weather[1], Time_of_day[0], Cow_milking_status[0], Location_of_the_cows[0], Season[1], Slurry_tank[1], Grass_status[0]))
 
-
-
+#optie 4
+# if farm_action('sunny', 'day', True, 'pasture', 'spring', False, True) == ('milk cows' or 'fertilize pasture' or 'mow grass') and Location_of_the_cows == 'pasture':
+#       print ('Test')
+# else: 
+#     print('Test2')
 
 
 
